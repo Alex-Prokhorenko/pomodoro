@@ -5,6 +5,7 @@
 @layer base {
   html {
     @apply bg-gray-800;
+    @apply font-mono;
   }
 
 }
