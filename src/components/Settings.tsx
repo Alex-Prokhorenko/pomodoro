@@ -1,13 +1,16 @@
 import React from 'react'
 import Button from "./Button";
 
-
+interface settingsProps{
+    workingTime: number,
+    restingTime: number
+}
 
 const handleApply = () => {
 
 }
 
-const Settings = () => {
+const Settings = ({workingTime, restingTime}: settingsProps) => {
 
 
     return (
@@ -17,12 +20,14 @@ const Settings = () => {
             <div className='flex justify-center items-center text-4xl'>
                 <p>Working time:</p>
                 <input type='number' min='0' max='1000' placeholder=' minutes' id='workingTime'
+                       value={workingTime}
                        className='bg-stone-700 w-1/5 h-12 ml-10 outline-0'/>
             </div>
 
             <div className='flex pt-10 justify-center items-center text-4xl pb-5'>
                 <p>Resting time:</p>
                 <input type='number' min='0' max='1000' placeholder=' minutes' id='restingTime'
+                       value={restingTime}
                        className='bg-stone-700 w-1/5 h-12 ml-10 outline-0'/>
             </div>
 

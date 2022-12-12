@@ -7,7 +7,7 @@ const data = {
     restingTime: 5,
     sessionsNumber: 0,
     isCounting: false,
-    isSettings: false
+    isSettings: true
 };
 
 const getPadTime = (time: number) => time.toString().padStart(2, '0');
@@ -50,7 +50,10 @@ const PomodoroContainer = () => {
 
     return (
         <div className="w-4/5 w-900 h-96 mx-auto my-10 bg-green-900">
-            {data.isSettings ? <Settings/>
+            {data.isSettings
+                ? <Settings workingTime={data.workingTime}
+                            restingTime={data.restingTime}
+                />
                 : <Work handleStart={handleStart}
                         handleStop={handleStop}
                         handleReset={handleReset}
