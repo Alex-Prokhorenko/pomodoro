@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import Button from "./Button";
 
 
@@ -9,10 +9,16 @@ interface workProps {
         sessionsNumber: number,
         isCounting: boolean,
         isSettings: boolean
-    }
+    },
+    handleStart: React.MouseEventHandler,
+    handleStop: React.MouseEventHandler,
+    handleReset: React.MouseEventHandler,
+    minutes: string,
+    seconds: string
+
 }
 
-const getPadTime = (time: number) => time.toString().padStart(2, '0');
+//const getPadTime = (time: number) => time.toString().padStart(2, '0');
 
 
 /*interface WorkProps {
@@ -21,40 +27,7 @@ const getPadTime = (time: number) => time.toString().padStart(2, '0');
     sessionsNumber: number;
 }*/
 
-const Work = ({data}: workProps) => {
-
-    const [timeLeft, setTimeLeft] = useState(data.workingTime);
-    const [isCounting, setIsCounting] = useState(data.isCounting)
-
-    const minutes: string = getPadTime(Math.floor(timeLeft / 60));
-    const seconds: string = getPadTime(timeLeft - +minutes * 60);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            isCounting && setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0))
-        }, 1000);
-        if (timeLeft === 0) setIsCounting(false);
-        return () => {
-            clearInterval(interval);
-        };
-    }, [timeLeft, isCounting] );
-
-    const handleStart = () => {
-        if (timeLeft === 0) setIsCounting(false);
-        setIsCounting(true);
-        data.isCounting = true;
-    }
-
-    const handleStop = () => {
-        setIsCounting(false);
-        data.isCounting = false;
-    }
-
-    const  handleReset = () => {
-        setIsCounting(false);
-        setTimeLeft(data.workingTime);
-        data.isCounting = false;
-    }
+const Work = ({handleStart, handleStop, handleReset, minutes, seconds}: workProps) => {
 
     return (
         <div className="w-100% h-96 bg-red-900 p-10">
