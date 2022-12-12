@@ -3,29 +3,12 @@ import Button from "./Button";
 
 
 interface workProps {
-    data: {
-        workingTime: number
-        restingTime: number,
-        sessionsNumber: number,
-        isCounting: boolean,
-        isSettings: boolean
-    },
     handleStart: React.MouseEventHandler,
     handleStop: React.MouseEventHandler,
     handleReset: React.MouseEventHandler,
     minutes: string,
     seconds: string
-
 }
-
-//const getPadTime = (time: number) => time.toString().padStart(2, '0');
-
-
-/*interface WorkProps {
-    workingHours: number;
-    restingHours: number;
-    sessionsNumber: number;
-}*/
 
 const Work = ({handleStart, handleStop, handleReset, minutes, seconds}: workProps) => {
 

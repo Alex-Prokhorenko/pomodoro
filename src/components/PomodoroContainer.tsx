@@ -16,8 +16,10 @@ const PomodoroContainer = () => {
     const [timeLeft, setTimeLeft] = useState(data.workingTime);
     const [isCounting, setIsCounting] = useState(data.isCounting)
 
+
     const minutes: string = getPadTime(Math.floor(timeLeft / 60));
     const seconds: string = getPadTime(timeLeft - +minutes * 60);
+
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -27,7 +29,7 @@ const PomodoroContainer = () => {
         return () => {
             clearInterval(interval);
         };
-    }, [timeLeft, isCounting] );
+    }, [timeLeft, isCounting]);
 
     const handleStart = () => {
         if (timeLeft === 0) setIsCounting(false);
@@ -40,20 +42,21 @@ const PomodoroContainer = () => {
         data.isCounting = false;
     }
 
-    const  handleReset = () => {
+    const handleReset = () => {
         setIsCounting(false);
         setTimeLeft(data.workingTime);
         data.isCounting = false;
     }
+
     return (
         <div className="w-4/5 w-900 h-96 mx-auto my-10 bg-green-900">
-            {data.isSettings ? <Settings/> : <Work data={data}
-                                                   handleStart={handleStart}
-                                                   handleStop={handleStop}
-                                                   handleReset={handleReset}
-                                                   minutes={minutes}
-                                                   seconds={seconds}
-            />}
+            {data.isSettings ? <Settings/>
+                : <Work handleStart={handleStart}
+                        handleStop={handleStop}
+                        handleReset={handleReset}
+                        minutes={minutes}
+                        seconds={seconds}
+                />}
         </div>
     );
 };
