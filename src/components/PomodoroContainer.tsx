@@ -7,12 +7,12 @@ const data = {
     restingTime: 5,
     sessionsNumber: 0,
     isCounting: false,
-    isSettings: false
+    isSettings: true
 };
 
 const PomodoroContainer = () => {
     return (
-        <div className="w-4/5 h-96 mx-auto my-10 bg-green-900">
+        <div className="w-4/5 w-900 h-96 mx-auto my-10 bg-green-900">
             {data.isSettings ? <Settings/> : <Work data={data}/>}
         </div>
     );
