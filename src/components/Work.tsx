@@ -1,12 +1,16 @@
 import React, {useEffect, useState} from 'react'
 import Button from "./Button";
 
-const data = {
-    workingHours: 60,
-    restingHours: 5,
-    sessionsNumber: 0,
-    isCounting: false
-};
+
+interface workProps {
+    data: {
+        workingTime: number
+        restingTime: number,
+        sessionsNumber: number,
+        isCounting: boolean,
+        isSettings: boolean
+    }
+}
 
 const getPadTime = (time: number) => time.toString().padStart(2, '0');
 
@@ -17,9 +21,9 @@ const getPadTime = (time: number) => time.toString().padStart(2, '0');
     sessionsNumber: number;
 }*/
 
-const Work = () => {
+const Work = ({data}: workProps) => {
 
-    const [timeLeft, setTimeLeft] = useState(data.workingHours);
+    const [timeLeft, setTimeLeft] = useState(data.workingTime);
     const [isCounting, setIsCounting] = useState(data.isCounting)
 
     const minutes: string = getPadTime(Math.floor(timeLeft / 60));
@@ -48,7 +52,7 @@ const Work = () => {
 
     const  handleReset = () => {
         setIsCounting(false);
-        setTimeLeft(data.workingHours);
+        setTimeLeft(data.workingTime);
         data.isCounting = false;
     }
 
