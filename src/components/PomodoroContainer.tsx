@@ -19,11 +19,11 @@ const PomodoroContainer = () => {
     const [isSettings, setIsSettings] = useState(data.isSettings);
 
     const minutes: string = getPadTime(Math.floor(timeLeft / 60));
-    const seconds: string = getPadTime(timeLeft - +minutes * 60);
+    const seconds: string = getPadTime(Math.floor(timeLeft - +minutes * 60));
 
     useEffect(() => {
         const interval = setInterval(() => {
-            isCounting && setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0))
+            isCounting && setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 0.0166666666666667 : 0))
         }, 1000);
         if (timeLeft === 0) setIsCounting(false);
         return () => {
