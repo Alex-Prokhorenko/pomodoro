@@ -14,6 +14,7 @@ const getPadTime = (time: number) => time.toString().padStart(2, '0');
 
 const PomodoroContainer = () => {
     const [timeLeft, setTimeLeft] = useState(data.workingTime);
+    const [restLeft, setRestLeft] = useState(data.restingTime);
     const [isCounting, setIsCounting] = useState(data.isCounting);
     const [isSettings, setIsSettings] = useState(data.isSettings);
 
@@ -49,16 +50,25 @@ const PomodoroContainer = () => {
     }
 
     const handleSetWork = (event: ChangeEvent<HTMLInputElement>) => {
-        console.log(event.target.value);
-        setTimeLeft(+event.target.value);
+        if (+event.target.value > 0 && +event.target.value < 1000) {
+            setTimeLeft(+event.target.value);
+        }
+    }
+
+    const handleSetRest = (event: ChangeEvent<HTMLInputElement>) => {
+        if (+event.target.value > 0 && +event.target.value < 1000) {
+            setRestLeft(+event.target.value);
+        }
     }
 
     return (
         <div className="w-4/5 w-900 h-96 mx-auto my-10 bg-green-900">
             {isSettings
                 ? <Settings handleSetWork={handleSetWork}
-                            workingTime={timeLeft}
-                            restingTime={data.restingTime}
+                            handleSetRest={handleSetRest}
+                            handleSettings={handleSettings}
+                            timeLeft={timeLeft}
+                            restLeft={restLeft}
                 />
                 : <Work handleStart={handleStart}
                         handleStop={handleStop}

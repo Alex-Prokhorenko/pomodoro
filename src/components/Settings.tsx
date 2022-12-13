@@ -2,14 +2,16 @@ import React from 'react'
 import Button from "./Button";
 
 interface settingsProps{
-    workingTime: number,
-    restingTime: number,
-    handleSetWork: React.ChangeEventHandler
+    timeLeft: number,
+    restLeft: number,
+    handleSetWork: React.ChangeEventHandler,
+    handleSetRest: React.ChangeEventHandler,
+    handleSettings: React.MouseEventHandler
 }
 
 
 
-const Settings = ({workingTime, restingTime, handleSetWork}: settingsProps) => {
+const Settings = ({timeLeft, restLeft, handleSetWork, handleSetRest, handleSettings}: settingsProps) => {
 
 
     return (
@@ -18,20 +20,21 @@ const Settings = ({workingTime, restingTime, handleSetWork}: settingsProps) => {
 
             <div className='flex justify-center items-center text-4xl'>
                 <p>Working time:</p>
-                <input type='number' min='0' max='1000' placeholder=' minutes' id='workingTime'
-                       value={workingTime}
-                       onChange={(event)=>handleSetWork(event)}
+                <input type='number' placeholder=' minutes' id='workingTime'
+                       value={timeLeft}
+                       onChange={(event) => handleSetWork(event)}
                        className='bg-stone-700 w-1/5 h-12 ml-10 outline-0'/>
             </div>
 
             <div className='flex pt-10 justify-center items-center text-4xl pb-5'>
                 <p>Resting time:</p>
                 <input type='number' min='0' max='1000' placeholder=' minutes' id='restingTime'
-                       value={restingTime}
+                       value={restLeft}
+                       onChange={(event) => handleSetRest(event)}
                        className='bg-stone-700 w-1/5 h-12 ml-10 outline-0'/>
             </div>
 
-            <Button name='OK' onClick={()=>{}}/>
+            <Button name='OK' onClick={handleSettings}/>
         </div>
     );
 };
