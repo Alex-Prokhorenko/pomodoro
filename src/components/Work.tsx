@@ -15,7 +15,7 @@ const Work = ({handleStart, handleStop, handleReset, handleSettings, minutes, se
 
     return (
         <div className="w-100% h-96 bg-red-900 p-10">
-            <Button name="settings" onClick={handleSettings}/>
+            <Button name="Settings" onClick={handleSettings}/>
             <div className=" text-white text-8xl mx-auto my-10 text-center">{minutes}:{seconds}</div>
             <div className="flex justify-around">
                 <Button onClick={handleStart} name="Start"/>

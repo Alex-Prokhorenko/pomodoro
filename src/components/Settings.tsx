@@ -3,14 +3,13 @@ import Button from "./Button";
 
 interface settingsProps{
     workingTime: number,
-    restingTime: number
+    restingTime: number,
+    handleSetWork: React.ChangeEventHandler
 }
 
-const handleApply = () => {
 
-}
 
-const Settings = ({workingTime, restingTime}: settingsProps) => {
+const Settings = ({workingTime, restingTime, handleSetWork}: settingsProps) => {
 
 
     return (
@@ -21,6 +20,7 @@ const Settings = ({workingTime, restingTime}: settingsProps) => {
                 <p>Working time:</p>
                 <input type='number' min='0' max='1000' placeholder=' minutes' id='workingTime'
                        value={workingTime}
+                       onChange={(event)=>handleSetWork(event)}
                        className='bg-stone-700 w-1/5 h-12 ml-10 outline-0'/>
             </div>
 
@@ -31,7 +31,7 @@ const Settings = ({workingTime, restingTime}: settingsProps) => {
                        className='bg-stone-700 w-1/5 h-12 ml-10 outline-0'/>
             </div>
 
-            <Button name='Apply' onClick={handleApply}/>
+            <Button name='OK' onClick={()=>{}}/>
         </div>
     );
 };

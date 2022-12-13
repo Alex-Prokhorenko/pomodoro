@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import Work from "./Work";
 import Settings from "./Settings";
 
@@ -15,13 +15,10 @@ const getPadTime = (time: number) => time.toString().padStart(2, '0');
 const PomodoroContainer = () => {
     const [timeLeft, setTimeLeft] = useState(data.workingTime);
     const [isCounting, setIsCounting] = useState(data.isCounting);
-    const [isSettings, setIsSettings] = useState(data.isSettings)
-
+    const [isSettings, setIsSettings] = useState(data.isSettings);
 
     const minutes: string = getPadTime(Math.floor(timeLeft / 60));
     const seconds: string = getPadTime(timeLeft - +minutes * 60);
-
-
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -48,16 +45,19 @@ const PomodoroContainer = () => {
     }
 
     const handleSettings = () => {
-        if (!isSettings) {
-            setIsSettings(true);
-        }
-        console.log('click');
+            setIsSettings(!isSettings);
+    }
+
+    const handleSetWork = (event: ChangeEvent<HTMLInputElement>) => {
+        console.log(event.target.value);
+        setTimeLeft(+event.target.value);
     }
 
     return (
         <div className="w-4/5 w-900 h-96 mx-auto my-10 bg-green-900">
             {isSettings
-                ? <Settings workingTime={data.workingTime}
+                ? <Settings handleSetWork={handleSetWork}
+                            workingTime={timeLeft}
                             restingTime={data.restingTime}
                 />
                 : <Work handleStart={handleStart}
