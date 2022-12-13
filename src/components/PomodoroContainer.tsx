@@ -7,18 +7,20 @@ const data = {
     restingTime: 5,
     sessionsNumber: 0,
     isCounting: false,
-    isSettings: true
+    isSettings: false
 };
 
 const getPadTime = (time: number) => time.toString().padStart(2, '0');
 
 const PomodoroContainer = () => {
     const [timeLeft, setTimeLeft] = useState(data.workingTime);
-    const [isCounting, setIsCounting] = useState(data.isCounting)
+    const [isCounting, setIsCounting] = useState(data.isCounting);
+    const [isSettings, setIsSettings] = useState(data.isSettings)
 
 
     const minutes: string = getPadTime(Math.floor(timeLeft / 60));
     const seconds: string = getPadTime(timeLeft - +minutes * 60);
+
 
 
     useEffect(() => {
@@ -34,29 +36,34 @@ const PomodoroContainer = () => {
     const handleStart = () => {
         if (timeLeft === 0) setIsCounting(false);
         setIsCounting(true);
-        data.isCounting = true;
     }
 
     const handleStop = () => {
         setIsCounting(false);
-        data.isCounting = false;
     }
 
     const handleReset = () => {
         setIsCounting(false);
         setTimeLeft(data.workingTime);
-        data.isCounting = false;
+    }
+
+    const handleSettings = () => {
+        if (!isSettings) {
+            setIsSettings(true);
+        }
+        console.log('click');
     }
 
     return (
         <div className="w-4/5 w-900 h-96 mx-auto my-10 bg-green-900">
-            {data.isSettings
+            {isSettings
                 ? <Settings workingTime={data.workingTime}
                             restingTime={data.restingTime}
                 />
                 : <Work handleStart={handleStart}
                         handleStop={handleStop}
                         handleReset={handleReset}
+                        handleSettings={handleSettings}
                         minutes={minutes}
                         seconds={seconds}
                 />}
