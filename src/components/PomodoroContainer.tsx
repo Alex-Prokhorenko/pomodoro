@@ -43,7 +43,7 @@ const PomodoroContainer = () => {
 
     const handleReset = () => {
         setIsCounting(false);
-        setTimeLeft(data.workingTime);
+        setTimeLeft(workLeft);
     }
 
     const handleSettings = () => {
@@ -56,7 +56,6 @@ const PomodoroContainer = () => {
             setWorkLeft(+event.target.value);
             setTimeLeft(+event.target.value);
         }
-        console.log(event.target.value);
     }
 
     const handleSetRest = (event: ChangeEvent<HTMLInputElement>) => {
