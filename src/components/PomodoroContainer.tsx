@@ -52,6 +52,7 @@ const PomodoroContainer = () => {
 
     const handleSetWork = (event: ChangeEvent<HTMLInputElement>) => {
         if (+event.target.value > 0 && +event.target.value < 1000) {
+            setIsCounting(false);
             setWorkLeft(+event.target.value);
             setTimeLeft(+event.target.value);
         }
@@ -59,7 +60,6 @@ const PomodoroContainer = () => {
     }
 
     const handleSetRest = (event: ChangeEvent<HTMLInputElement>) => {
-        event.target.select();
         if (+event.target.value > 0 && +event.target.value < 1000) {
             setRestLeft(+event.target.value);
         }
