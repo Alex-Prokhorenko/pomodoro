@@ -2,7 +2,7 @@ import React from 'react'
 import Button from "./Button";
 
 interface settingsProps{
-    timeLeft: number,
+    workLeft: number,
     restLeft: number,
     handleSetWork: React.ChangeEventHandler,
     handleSetRest: React.ChangeEventHandler,
@@ -11,8 +11,7 @@ interface settingsProps{
 
 
 
-const Settings = ({timeLeft, restLeft, handleSetWork, handleSetRest, handleSettings}: settingsProps) => {
-
+const Settings = ({workLeft, restLeft, handleSetWork, handleSetRest, handleSettings}: settingsProps) => {
 
     return (
         <div className='h-96 text-center text-white bg-emerald-600'>
@@ -21,8 +20,8 @@ const Settings = ({timeLeft, restLeft, handleSetWork, handleSetRest, handleSetti
             <div className='flex justify-center items-center text-4xl'>
                 <p>Working time:</p>
                 <input type='number' placeholder=' minutes' id='workingTime'
-                       value={timeLeft}
-                       onChange={(event) => handleSetWork(event)}
+                       value={workLeft}
+                       onChange={(event) => handleSetWork(event)} onFocus={(event) => event.target.select()}
                        className='bg-stone-700 w-1/5 h-12 ml-10 outline-0'/>
             </div>
 
@@ -31,6 +30,7 @@ const Settings = ({timeLeft, restLeft, handleSetWork, handleSetRest, handleSetti
                 <input type='number' min='0' max='1000' placeholder=' minutes' id='restingTime'
                        value={restLeft}
                        onChange={(event) => handleSetRest(event)}
+                       onFocus={(event) => event.target.select()}
                        className='bg-stone-700 w-1/5 h-12 ml-10 outline-0'/>
             </div>
 

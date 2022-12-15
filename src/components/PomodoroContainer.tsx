@@ -14,6 +14,7 @@ const getPadTime = (time: number) => time.toString().padStart(2, '0');
 
 const PomodoroContainer = () => {
     const [timeLeft, setTimeLeft] = useState(data.workingTime);
+    const [workLeft, setWorkLeft] = useState(data.workingTime)
     const [restLeft, setRestLeft] = useState(data.restingTime);
     const [isCounting, setIsCounting] = useState(data.isCounting);
     const [isSettings, setIsSettings] = useState(data.isSettings);
@@ -51,11 +52,14 @@ const PomodoroContainer = () => {
 
     const handleSetWork = (event: ChangeEvent<HTMLInputElement>) => {
         if (+event.target.value > 0 && +event.target.value < 1000) {
+            setWorkLeft(+event.target.value);
             setTimeLeft(+event.target.value);
         }
+        console.log(event.target.value);
     }
 
     const handleSetRest = (event: ChangeEvent<HTMLInputElement>) => {
+        event.target.select();
         if (+event.target.value > 0 && +event.target.value < 1000) {
             setRestLeft(+event.target.value);
         }
@@ -67,7 +71,7 @@ const PomodoroContainer = () => {
                 ? <Settings handleSetWork={handleSetWork}
                             handleSetRest={handleSetRest}
                             handleSettings={handleSettings}
-                            timeLeft={timeLeft}
+                            workLeft={workLeft}
                             restLeft={restLeft}
                 />
                 : <Work handleStart={handleStart}
