@@ -24,8 +24,8 @@ const PomodoroContainer = () => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            isCounting && setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 0.0166666666666667 : 0))
-        }, 1000);
+            isCounting && setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0))
+        }, 60000);
         if (timeLeft === 0) setIsCounting(false);
         return () => {
             clearInterval(interval);
