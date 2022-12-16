@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from "./Button";
-
+import styles from "./styles/Work.module.css"
 
 interface workProps {
     handleStart: React.MouseEventHandler,
@@ -14,14 +14,15 @@ interface workProps {
 
 const Work = ({handleStart, handleStop, handleReset, handleSettings, minutes, seconds, isWork}: workProps) => {
 
-    return <div className="w-100% h-96 p-10">
-        {isWork ? <p>is work</p> : <p>is rest</p>}
+    return <div className={isWork ? 'bg-red-900' : 'bg-green-500'}>
+        <div className={styles.work}>
         <Button name="Settings" onClick={handleSettings}/>
-        <div className=" text-white text-8xl mx-auto my-10 text-center">{minutes}:{seconds}</div>
+        <div className={styles.clocks}>{minutes}:{seconds}</div>
         <div className="flex justify-around">
             <Button onClick={handleStart} name="Start"/>
             <Button onClick={handleStop} name="Stop"/>
             <Button onClick={handleReset} name="Reset"/>
+        </div>
         </div>
     </div>;
 };

@@ -73,7 +73,7 @@ const PomodoroContainer = () => {
     }
 
     return (
-        <div className="w-4/5 w-900 h-96 mx-auto my-10 bg-green-900">
+        <div className="w-4/5 w-900 h-96 mx-auto my-10">
             {isSettings
                 ? <Settings handleSetWork={handleSetWork}
                             handleSetRest={handleSetRest}

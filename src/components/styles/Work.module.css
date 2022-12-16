@@ -1,0 +1,7 @@
+.work {
+  @apply h-96 p-10;
+}
+
+.clocks {
+  @apply text-white text-8xl mx-auto my-10 text-center;
+}
