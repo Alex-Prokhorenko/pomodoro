@@ -7,6 +7,7 @@ const data = {
     restingTime: 5,
     sessionsNumber: 0,
     isCounting: false,
+    isWork: true,
     isSettings: false
 };
 
@@ -17,6 +18,7 @@ const PomodoroContainer = () => {
     const [workLeft, setWorkLeft] = useState(data.workingTime)
     const [restLeft, setRestLeft] = useState(data.restingTime);
     const [isCounting, setIsCounting] = useState(data.isCounting);
+    const [isWork, setIsWork] = useState(data.isWork)
     const [isSettings, setIsSettings] = useState(data.isSettings);
 
     const minutes: string = getPadTime(Math.floor(timeLeft / 60));
@@ -26,11 +28,17 @@ const PomodoroContainer = () => {
         const interval = setInterval(() => {
             isCounting && setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0))
         }, 60000);
-        if (timeLeft === 0) setIsCounting(false);
+        if (timeLeft === 0 && isWork) {
+            setTimeLeft(restLeft);
+            setIsWork(false);
+        } else if (timeLeft === 0 && !isWork) {
+            setTimeLeft(workLeft);
+            setIsWork(true);
+        }
         return () => {
             clearInterval(interval);
         };
-    }, [timeLeft, isCounting]);
+    }, [timeLeft, restLeft, isCounting, isWork, workLeft]);
 
     const handleStart = () => {
         if (timeLeft === 0) setIsCounting(false);
@@ -79,6 +87,7 @@ const PomodoroContainer = () => {
                         handleSettings={handleSettings}
                         minutes={minutes}
                         seconds={seconds}
+                        isWork={isWork}
                 />}
         </div>
     );
