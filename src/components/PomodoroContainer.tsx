@@ -88,6 +88,7 @@ const PomodoroContainer = () => {
                         minutes={minutes}
                         seconds={seconds}
                         isWork={isWork}
+                        isCounting={isCounting}
                 />}
         </div>
     );
