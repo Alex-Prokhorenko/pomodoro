@@ -1,0 +1,15 @@
+.settings_component {
+    @apply h-96 text-center text-white bg-teal-700;
+}
+
+.header {
+    @apply text-6xl p-10 underline decoration-1;
+}
+
+.inputs_block {
+    @apply flex justify-center items-center text-4xl mb-3;
+}
+
+.input {
+    @apply bg-stone-700 w-1/5 h-12 ml-10
+}

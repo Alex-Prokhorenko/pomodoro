@@ -25,7 +25,7 @@ const Work = ({
               }: workProps) => {
 
     return <div className={isWork ? 'bg-red-900' : 'bg-green-700'}>
-        <div className={styles.work}>
+        <div className={styles.work_component}>
             <div className={styles.settings_block}>
                 <Button name="Settings" onClick={handleSettings}/>
                 <div>

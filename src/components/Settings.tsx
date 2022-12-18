@@ -1,5 +1,6 @@
-import React from 'react'
+import React from "react"
 import Button from "./Button";
+import styles from "./styles/Settings.module.css"
 
 interface settingsProps{
     workLeft: number,
@@ -14,24 +15,26 @@ interface settingsProps{
 const Settings = ({workLeft, restLeft, handleSetWork, handleSetRest, handleSettings}: settingsProps) => {
 
     return (
-        <div className='h-96 text-center text-white bg-emerald-600'>
-            <h1 className='text-6xl p-10 underline decoration-1'>Settings</h1>
+        <div className={styles.settings_component}>
+            <h1 className={styles.header}>Settings</h1>
 
-            <div className='flex justify-center items-center text-4xl'>
+            <div className={styles.inputs_block}>
                 <p>Working time:</p>
                 <input type='number' placeholder=' minutes' id='workingTime'
                        value={workLeft}
                        onChange={(event) => handleSetWork(event)} onFocus={(event) => event.target.select()}
-                       className='bg-stone-700 w-1/5 h-12 ml-10'/>
+                       className={styles.input}
+                />
             </div>
 
-            <div className='flex pt-10 justify-center items-center text-4xl pb-5'>
+            <div className={styles.inputs_block}>
                 <p>Resting time:</p>
                 <input type='number' min='0' max='1000' placeholder=' minutes' id='restingTime'
                        value={restLeft}
                        onChange={(event) => handleSetRest(event)}
                        onFocus={(event) => event.target.select()}
-                       className='bg-stone-700 w-1/5 h-12 ml-10'/>
+                       className={styles.input}
+                />
             </div>
 
             <Button name='OK' onClick={handleSettings}/>
