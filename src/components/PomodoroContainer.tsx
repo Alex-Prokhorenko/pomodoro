@@ -11,16 +11,17 @@ const data = {
     isSettings: false
 };
 
+const ding = require("./sounds/ding.mp3");
 const getPadTime = (time: number) => time.toString().padStart(2, '0');
 
 const PomodoroContainer = () => {
+
     const [timeLeft, setTimeLeft] = useState(data.workingTime);
     const [workLeft, setWorkLeft] = useState(data.workingTime)
     const [restLeft, setRestLeft] = useState(data.restingTime);
     const [isCounting, setIsCounting] = useState(data.isCounting);
     const [isWork, setIsWork] = useState(data.isWork)
     const [isSettings, setIsSettings] = useState(data.isSettings);
-
     const minutes: string = getPadTime(Math.floor(timeLeft / 60));
     const seconds: string = getPadTime(Math.floor(timeLeft - +minutes * 60));
 
@@ -28,12 +29,15 @@ const PomodoroContainer = () => {
         const interval = setInterval(() => {
             isCounting && setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0))
         }, 60000);
+        const audio = new Audio(ding);
         if (timeLeft === 0 && isWork) {
             setTimeLeft(restLeft);
             setIsWork(false);
+            audio.play();
         } else if (timeLeft === 0 && !isWork) {
             setTimeLeft(workLeft);
             setIsWork(true);
+            audio.play();
         }
         return () => {
             clearInterval(interval);
@@ -44,20 +48,16 @@ const PomodoroContainer = () => {
         if (timeLeft === 0) setIsCounting(false);
         setIsCounting(true);
     }
-
     const handleStop = () => {
         setIsCounting(false);
     }
-
     const handleReset = () => {
         setIsCounting(false);
         setTimeLeft(workLeft);
     }
-
     const handleSettings = () => {
             setIsSettings(!isSettings);
     }
-
     const handleSetWork = (event: ChangeEvent<HTMLInputElement>) => {
         if (+event.target.value > 0 && +event.target.value < 1000) {
             setIsCounting(false);
@@ -65,7 +65,6 @@ const PomodoroContainer = () => {
             setTimeLeft(+event.target.value);
         }
     }
-
     const handleSetRest = (event: ChangeEvent<HTMLInputElement>) => {
         if (+event.target.value > 0 && +event.target.value < 1000) {
             setRestLeft(+event.target.value);
