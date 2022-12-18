@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from "react";
 import Work from "./Work";
 import Settings from "./Settings";
 
@@ -12,7 +12,8 @@ const data = {
 };
 
 const ding = require("./sounds/ding.mp3");
-const getPadTime = (time: number) => time.toString().padStart(2, '0');
+
+const getPadTime = (time: number) => time.toString().padStart(2, "0");
 
 const PomodoroContainer = () => {
 
@@ -22,6 +23,7 @@ const PomodoroContainer = () => {
     const [isCounting, setIsCounting] = useState(data.isCounting);
     const [isWork, setIsWork] = useState(data.isWork)
     const [isSettings, setIsSettings] = useState(data.isSettings);
+
     const minutes: string = getPadTime(Math.floor(timeLeft / 60));
     const seconds: string = getPadTime(Math.floor(timeLeft - +minutes * 60));
 
@@ -58,24 +60,21 @@ const PomodoroContainer = () => {
     const handleSettings = () => {
             setIsSettings(!isSettings);
     }
-    const handleSetWork = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleSetTime = (event: ChangeEvent<HTMLInputElement>) => {
         if (+event.target.value > 0 && +event.target.value < 1000) {
-            setIsCounting(false);
-            setWorkLeft(+event.target.value);
-            setTimeLeft(+event.target.value);
+            event.target.id === "workingTime"
+                ? setWorkLeft(+event.target.value)
+                : setRestLeft(+event.target.value);
+            if (isWork && event.target.id === "workingTime") {
+                setTimeLeft(+event.target.value)
+            } else if (!isWork && event.target.id === "restingTime") setTimeLeft(+event.target.value);
+            }
         }
-    }
-    const handleSetRest = (event: ChangeEvent<HTMLInputElement>) => {
-        if (+event.target.value > 0 && +event.target.value < 1000) {
-            setRestLeft(+event.target.value);
-        }
-    }
 
     return (
         <div className="w-4/5 w-900 h-96 mx-auto my-10">
             {isSettings
-                ? <Settings handleSetWork={handleSetWork}
-                            handleSetRest={handleSetRest}
+                ? <Settings handleSetTime={handleSetTime}
                             handleSettings={handleSettings}
                             workLeft={workLeft}
                             restLeft={restLeft}

@@ -24,13 +24,13 @@ const Work = ({
                   isCounting
               }: workProps) => {
 
-    return <div className={isWork ? 'bg-red-900' : 'bg-green-700'}>
+    return <div className={isWork ? "bg-red-900" : "bg-green-700"}>
         <div className={styles.work_component}>
             <div className={styles.settings_block}>
                 <Button name="Settings" onClick={handleSettings}/>
                 <div>
                     {isCounting
-                        && <img src={require('./img/2GU.gif')} alt="work" width="60px"/>}
+                        && <img src={require("./img/2GU.gif")} alt="work" width="60px"/>}
                 </div>
             </div>
             <div className={styles.clocks}>{minutes}:{seconds}</div>
