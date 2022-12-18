@@ -22,7 +22,7 @@ const Settings = ({workLeft, restLeft, handleSetWork, handleSetRest, handleSetti
                 <input type='number' placeholder=' minutes' id='workingTime'
                        value={workLeft}
                        onChange={(event) => handleSetWork(event)} onFocus={(event) => event.target.select()}
-                       className='bg-stone-700 w-1/5 h-12 ml-10 outline-0'/>
+                       className='bg-stone-700 w-1/5 h-12 ml-10'/>
             </div>
 
             <div className='flex pt-10 justify-center items-center text-4xl pb-5'>
@@ -31,7 +31,7 @@ const Settings = ({workLeft, restLeft, handleSetWork, handleSetRest, handleSetti
                        value={restLeft}
                        onChange={(event) => handleSetRest(event)}
                        onFocus={(event) => event.target.select()}
-                       className='bg-stone-700 w-1/5 h-12 ml-10 outline-0'/>
+                       className='bg-stone-700 w-1/5 h-12 ml-10'/>
             </div>
 
             <Button name='OK' onClick={handleSettings}/>

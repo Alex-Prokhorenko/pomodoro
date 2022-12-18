@@ -26,7 +26,7 @@ const Work = ({
 
     return <div className={isWork ? 'bg-red-900' : 'bg-green-700'}>
         <div className={styles.work}>
-            <div className="flex justify-between h-30">
+            <div className={styles.settings_block}>
                 <Button name="Settings" onClick={handleSettings}/>
                 <div>
                     {isCounting
@@ -34,7 +34,7 @@ const Work = ({
                 </div>
             </div>
             <div className={styles.clocks}>{minutes}:{seconds}</div>
-            <div className="flex justify-around">
+            <div className={styles.buttons_block}>
                 <Button onClick={handleStart} name="Start"/>
                 <Button onClick={handleStop} name="Stop"/>
                 <Button onClick={handleReset} name="Reset"/>

@@ -5,3 +5,11 @@
 .clocks {
   @apply text-white text-8xl mb-10 text-center;
 }
+
+.settings_block {
+  @apply flex justify-between;
+}
+
+.buttons_block {
+  @apply flex justify-around;
+}
