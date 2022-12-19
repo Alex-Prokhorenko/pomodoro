@@ -55,6 +55,7 @@ const PomodoroContainer = () => {
     }
     const handleReset = () => {
         setIsCounting(false);
+        setIsWork(true);
         setTimeLeft(workLeft);
     }
     const handleSettings = () => {
