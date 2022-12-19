@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    @apply bg-gray-900 font-mono;
-  }
+    html {
+        @apply bg-gray-900 font-mono;
+    }
 
 }

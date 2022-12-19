@@ -6,7 +6,7 @@ interface ButtonProps {
     onClick: React.MouseEventHandler
 }
 
-const Button = ({name, onClick}:ButtonProps) => {
+const Button = ({name, onClick}: ButtonProps) => {
     return (
         <div>
             <button className={styles.button} onClick={onClick}>{name}</button>

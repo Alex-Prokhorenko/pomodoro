@@ -3,13 +3,13 @@
 }
 
 .header {
-    @apply text-6xl p-10 underline decoration-1 text-slate-300;
+    @apply text-6xl p-10 underline decoration-1 text-sky-100;
 }
 
 .inputs_block {
-    @apply flex justify-center items-center text-4xl mb-3 text-slate-300;
+    @apply flex justify-center items-center text-4xl mb-3 text-sky-100;
 }
 
 .input {
-    @apply bg-stone-700 w-1/5 h-12 ml-10 text-slate-300;
+    @apply bg-stone-700 w-1/5 h-12 ml-10 text-sky-100;
 }

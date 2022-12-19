@@ -47,7 +47,6 @@ const PomodoroContainer = () => {
     }, [timeLeft, restLeft, isCounting, isWork, workLeft]);
 
     const handleStart = () => {
-        if (timeLeft === 0) setIsCounting(false);
         setIsCounting(true);
     }
     const handleStop = () => {
@@ -59,7 +58,7 @@ const PomodoroContainer = () => {
         setTimeLeft(workLeft);
     }
     const handleSettings = () => {
-            setIsSettings(!isSettings);
+        setIsSettings(!isSettings);
     }
     const handleSetTime = (event: ChangeEvent<HTMLInputElement>) => {
         if (+event.target.value > 0 && +event.target.value < 1000) {
@@ -69,8 +68,8 @@ const PomodoroContainer = () => {
             if (isWork && event.target.id === "workingTime") {
                 setTimeLeft(+event.target.value)
             } else if (!isWork && event.target.id === "restingTime") setTimeLeft(+event.target.value);
-            }
         }
+    }
 
     return (
         <div className="w-4/5 w-900 h-96 mx-auto my-10">
