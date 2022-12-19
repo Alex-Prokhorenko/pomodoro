@@ -3,7 +3,7 @@
 }
 
 .clocks {
-  @apply text-white text-8xl mb-10 text-center;
+  @apply text-white text-8xl mb-10 text-center text-orange-200;
 }
 
 .settings_block {

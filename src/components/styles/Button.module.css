@@ -1,0 +1,5 @@
+@tailwind base{
+.button {
+    @apply border-solid border-2 border-#fff text-white text-5xl p-2 rounded-2xl mt-5 hover:bg-zinc-800 border-none bg-zinc-700 shadow-2xl text-orange-200;
+  }
+}
