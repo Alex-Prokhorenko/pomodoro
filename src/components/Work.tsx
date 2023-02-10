@@ -28,9 +28,9 @@ const Work = ({
         <div className={styles.work_component}>
             <div className={styles.settings_block}>
                 <Button name="Settings" onClick={handleSettings}/>
-                <div>
+                <div >
                     {isCounting
-                        && <img src={require("./img/2GU.gif")} alt="work" width="60px"/>}
+                        && <img src={require("./img/2GU.gif")} alt="work" width="65px"/>}
                 </div>
             </div>
             <div className={styles.clocks}>{minutes}:{seconds}</div>
